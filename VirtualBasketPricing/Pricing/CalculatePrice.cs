@@ -17,7 +17,13 @@ namespace VirtualBasketPricing
         }
         public int GetTotalPrice(IList<string> items)
         {
-            throw new NotImplementedException();
+            int totalPrice = 0;
+            
+            foreach (var item in items)
+            {
+                totalPrice += _rules.Where(r => r.ItemName == item).Select(x => x.Price).FirstOrDefault();
+            }
+            return totalPrice;
         }
     }
 }
