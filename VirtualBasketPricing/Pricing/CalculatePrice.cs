@@ -18,10 +18,29 @@ namespace VirtualBasketPricing
         public int GetTotalPrice(IList<string> items)
         {
             int totalPrice = 0;
-            
+
             foreach (var item in items)
             {
-                totalPrice += _rules.Where(r => r.ItemName == item).Select(x => x.Price).FirstOrDefault();
+                var itemsToBuy = _rules.Where(r => r.ItemName == item).Select(x => x.NumberOfItemToBuy).FirstOrDefault();
+                var itemsFree = _rules.Where(r => r.ItemName == item).Select(x => x.NumberItemsForFree).FirstOrDefault();
+                var itemPrice = _rules.Where(r => r.ItemName == item).Select(x => x.Price).FirstOrDefault();
+                var totalItems = itemsFree + itemsToBuy;
+                var itemCount = items.Count;
+                if (itemCount == totalItems)
+                {
+                    var quoientValue = (itemCount / totalItems) * itemsToBuy;
+                    var remainderValue = itemCount % totalItems;
+
+                    var totalItemsToCalculate = (quoientValue + remainderValue) * itemPrice;
+
+                    totalPrice += totalItemsToCalculate;
+                    break;
+                }
+                else
+                {
+                    totalPrice += itemCount * itemPrice;
+                    break;
+                }
             }
             return totalPrice;
         }
