@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ICalculatePricing.cs" />
     <Compile Include="Pricing\CalculatePrice.cs" />
+    <Compile Include="Pricing\NonPromoItemDetails.cs" />
     <Compile Include="Pricing\Rule.cs" />
     <Compile Include="Pricing\RuleItem.cs" />
     <Compile Include="Program.cs" />
