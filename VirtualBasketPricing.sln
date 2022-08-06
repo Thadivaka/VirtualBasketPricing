@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualBasketPricing", "VirtualBasketPricing\VirtualBasketPricing.csproj", "{B78FB815-0C82-4853-BF71-2E178E514930}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualBasketPricing.Tests", "VirtualBasketPricing.Tests\VirtualBasketPricing.Tests.csproj", "{80BBEB7B-C13F-48C4-A83B-20B0840A9258}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B78FB815-0C82-4853-BF71-2E178E514930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B78FB815-0C82-4853-BF71-2E178E514930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B78FB815-0C82-4853-BF71-2E178E514930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80BBEB7B-C13F-48C4-A83B-20B0840A9258}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80BBEB7B-C13F-48C4-A83B-20B0840A9258}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80BBEB7B-C13F-48C4-A83B-20B0840A9258}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80BBEB7B-C13F-48C4-A83B-20B0840A9258}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
