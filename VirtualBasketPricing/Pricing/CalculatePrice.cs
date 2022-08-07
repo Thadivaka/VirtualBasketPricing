@@ -16,6 +16,11 @@ namespace VirtualBasketPricing
             _rules = rules;
             LoadItemsWithCount(rules);
         }
+        /// <summary>
+        /// Calculate total price
+        /// </summary>
+        /// <param name="selectedItems"></param>
+        /// <returns></returns>
         public int GetTotalPrice(IList<string> selectedItems)
         {
             _NonPromotionItems = selectedItems.ToList();
@@ -49,20 +54,19 @@ namespace VirtualBasketPricing
                 }
             }
 
-            var groupByScanItems = (from nonPromo in _NonPromotionItems
-                                    group nonPromo by nonPromo into groupItems
-                                    select new NonPromoItemDetails { ItemName = groupItems.Key, Count = groupItems.Count() }).ToList();
-            foreach (var nonPromoItem in groupByScanItems)
+            foreach(var nonPromoItem in _NonPromotionItems)
             {
-                var amount = _rules.Where(r => r.ItemName == nonPromoItem.ItemName).Select(rs => rs.Price).FirstOrDefault();
-
-                totalPrice += nonPromoItem.Count * amount;
+                totalPrice += _rules.Where(r => r.ItemName == nonPromoItem).Select(rs => rs.Price).FirstOrDefault();
             }
 
             return totalPrice;
         }
 
         #region Private Methods
+        /// <summary>
+        /// Creates dictionary with key as discount promo rule and value as items with same promo rule
+        /// </summary>
+        /// <param name="rules"></param>
         private void LoadItemsWithCount(IEnumerable<Rule> rules)
         {
             foreach (var rule in rules)
